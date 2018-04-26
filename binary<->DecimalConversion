@@ -1,0 +1,74 @@
+/*algorithm:
+
+1.convert given number into binary
+2.swap two binaryBits each other (i.e):(0<->1)(2<->3)
+3.convert that binary into integer
+
+example:
+i/p:
+32
+
+1. binary conversion -->10 00 00
+2.swap bits eachother-->01 00 00
+3.binary to decimal--->16
+
+o/p:
+16
+*/
+
+import java.util.*;
+class GFG {
+    int convertnumber(String s)
+    {
+       int a[]=new int[s.length()];
+       
+       for(int i=0;i<a.length;i++)
+          a[i]=s.charAt(i)-'0';
+          
+        int res=0,rem=0,c=a.length-1;
+        for(int i=0;i<a.length;i++)
+        {
+            res+=(Math.pow(2,c))*a[i];
+            c--;
+        }return res;
+    }
+      String swap(String s)
+    {
+        char c[]=s.toCharArray();
+        for(int i=0;i<c.length-1;i+=2)
+        {
+        char temp=c[i];
+            c[i]=c[i+1];
+            c[i+1]=temp;
+        }
+        return String.valueOf(c);
+    }
+    String convertbinary(long k)
+    {
+        String s="";
+        StringBuffer str=new StringBuffer();
+        while(k>0){
+           s+=k%2;
+           k/=2;
+        }
+          str.append(s);
+          str=str.reverse();
+          s="";
+          s+=str;
+        return s;
+    }
+	public static void main (String[] args) {
+	    Scanner s=new Scanner(System.in);
+	    GFG ob=new GFG();
+	    try{
+	     long a=s.nextLong();
+	     String k=ob.convertbinary(a);
+	     String c=ob.swap(k);
+	     int res=ob.convertnumber(c);
+	     System.out.print(res);
+	    }catch(Exception e)
+        {
+            System.out.print("Pls enter range nbr");
+        }
+	}
+}
