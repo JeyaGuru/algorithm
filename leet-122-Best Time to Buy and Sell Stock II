@@ -1,0 +1,18 @@
+
+class Solution {
+    public int maxProfit(int[] ar) {
+        int max=0;
+        for(int i=1;i<ar.length;i++)
+        {
+                if((ar[i]-ar[i-1])>0 )
+                {
+                    max+=(ar[i]-ar[i-1]);  
+                }
+            }
+        
+        if(max<0){
+            max=-1;
+        }
+        return max;
+    }
+}
