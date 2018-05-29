@@ -1,0 +1,59 @@
+/*package whatever //do not write package name here */
+
+   /// o(n)-complexity
+
+import java.util.*;
+
+class GFG {
+
+    static String stradd(String a,String b)
+    {
+        int i=a.length()-1;
+        int sum=0,c=0;
+        String k="";
+        
+        //perform addition
+        
+        while(i>=0)
+        {
+            sum=a.charAt(i)-'0'+b.charAt(i)-'0'+c;
+            c=sum/10;
+             k+=sum%10;
+            i--;
+        }
+        
+        //reverse string
+        
+        StringBuffer l=new StringBuffer();
+        l.append(k);
+        l=l.reverse();
+        k="";
+        k+=l;
+        return k;
+    }
+    
+	public static void main (String[] args) {
+		String s="1234567890";
+		String k="123456789000";
+		String ss="";
+    
+    //make it to equal size of both strings then call methods..
+    
+		if(s.length()>k.length())
+		  {
+		      
+		      for(int i=0;i<(s.length()-k.length());i++)
+		       ss+="0";
+		       ss+=k;
+		       	System.out.print(st(s,ss));
+		  }else
+		  {
+		      
+		      for(int i=0;i<(k.length()-s.length());i++)
+		       ss+="0";
+		       ss+=s;
+		       	System.out.print(stradd(ss,k));
+		  }
+	
+	}
+}
