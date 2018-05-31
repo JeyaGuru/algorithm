@@ -1,0 +1,53 @@
+import java.io.*;
+     
+     /* 
+     * set iterator i for 1st array(A) & j for second array(B)
+     * compare if(a[i]<b[j]) print a[i] & increment i;
+     * compare if(a[i]>b[j]) print b[i] & increment j;
+     * compare if(a[i]==b[j]) print any 1 element & increment both i & j;
+     * then print the remaining elements;
+     */
+
+//complexity- o(m+n)
+
+class GFG {
+    static void unionPrint(int ar[],int br[])
+    {
+        int i=0,j=0;
+        System.out.print("union: ");
+        while(i<ar.length && j<br.length)           //m
+        {
+            if(ar[i]<br[j])
+            System.out.print(ar[i++]+" ");
+            else if(ar[i]>br[j])
+            System.out.print(br[j++]+" ");
+            else{
+            System.out.print(ar[i++]+" ");  j++;}
+        }
+        while(i<ar.length)                           //n
+        System.out.print(ar[i++]+" ");
+        while(j<br.length)                           //n
+        System.out.print(br[j++]+" ");
+        
+    }
+    static void intersectionPrint(int ar[],int br[])
+    {
+        int i=0,j=0;
+        System.out.println();
+        System.out.print("intersection :");
+        while(i<ar.length && j<br.length)
+        {   j=0;
+            while(j<br.length && i<ar.length ){
+            if(ar[i]==br[j]){
+            System.out.print(ar[i]+" "); j++;}
+            i++; }
+        }
+    }
+	public static void main (String[] args)
+	{
+	   int ar[]={1,2,3,4,5};
+	   int br[]={4,5,6};
+	   unionPrint(ar,br);
+	   intersectionPrint(ar,br);
+	  	}
+}
