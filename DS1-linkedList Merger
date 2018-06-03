@@ -1,0 +1,86 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+
+class GFG {
+    static Node head;
+	static class Node{
+	    int val;
+	    Node next;
+	    Node(int a)
+	    {
+	        val=a;
+	        next=null;
+	    }
+	}
+	static Node sort(Node a)
+	{
+	       Node i=a,j;
+	       while(i!=null)
+	       {
+	           j=i.next;
+	           while(j!=null)
+	           {
+	               if(i.val>j.val)
+	               {
+	                   int t=i.val;
+	                   i.val=j.val;
+	                   j.val=i.val;
+	               }j=j.next;
+	           }i=i.next;
+	       }return a;
+	}
+  
+	static Node merge(Node a,Node b)
+	{
+	    Node k=a,p=b;
+	    while(k.next!=null) k=k.next;
+	    k.next=b;
+	     return a; 
+	   
+	}
+  
+	static void print(Node a)
+	{
+	    while(a!=null)
+	    {
+	        System.out.println(a.val+" ");
+	        a=a.next;
+	    }
+	}
+  
+	public static void main (String[] args) {
+	    Scanner s=new Scanner(System.in);
+	    int n=s.nextInt();
+	    Node p=null,p1=null;
+	    Node q=null,q1=null;
+	    for(int i=0;i<n;i++)
+	       {
+	           if(p==null)
+	           {
+	               p=new Node(s.nextInt());
+	               p1=p;
+	           }else
+	           {
+	               p1.next=new Node(s.nextInt());
+	               p1=p1.next;
+	           }
+	       }
+	       for(int i=0;i<n;i++)
+	       {
+	           if(q==null)
+	           {
+	               q=new Node(s.nextInt());
+	               q1=q;
+	           }else
+	           {
+	               q1.next=new Node(s.nextInt());
+	               q1=q1.next;
+	           }
+	       }
+	       
+	       Node res=merge(p,q);
+	         Node re1=sort(res);
+	         print(re1);
+	}
+}
