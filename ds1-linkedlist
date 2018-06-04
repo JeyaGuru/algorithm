@@ -1,0 +1,87 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+
+class GFG {
+     static Node head;
+     static class Node{
+        int val;
+        Node next;
+        Node(int a)
+        {
+            val=a;
+            next=null;
+        }
+    }
+    static Node dup(Node a)
+    {
+        Node k=a,p,q;
+        while(k!=null)
+        {
+            p=k.next;
+            q=k;
+            while(p!=null)
+            {
+                if(k.val==p.val)
+                  q.next=p.next;
+                else
+                  q=p; 
+                p=p.next;
+            }k=k.next;
+        }return a;
+    }
+    static Node sort(Node k,Node p)
+    {
+            p=k.next;
+           while(p!=null)
+           {
+               if(k.val>p.val)
+               {
+                   int t=k.val;
+                   k.val=p.val;
+                   p.val=t;
+               }p=p.next;
+           }
+          
+       if(k.next!=null) 
+       sort(k.next,p);
+       
+       return head;
+    }
+    static Node reverse(Node cur,Node prev)
+    {     
+        if(cur.next==null)
+        {
+            cur.next=prev;
+             head=cur;
+            return head;
+        }
+         Node next;
+        next=cur.next;
+         cur.next=prev;
+         reverse(next,cur);
+         return head;
+    }
+    static void print(Node q)
+    {    
+            System.out.print(q.val+" ");
+            if(q.next!=null)
+             print(q.next);
+       
+    }
+	public static void main (String[] args) {
+	     GFG ob=new GFG();
+	     
+	     Scanner s=new Scanner(System.in);
+	     int n=s.nextInt();
+	     int i=0;
+	     while(i<n){
+	    Node p=new Node(s.nextInt());   p.next=head; head=p;  i++; } 
+	     reverse(head,null);
+	    Node res=sort(head,null);
+	    print(res);
+	    Node res1=dup(head);
+	    System.out.println();
+	    print(res1);
+	}
+}
