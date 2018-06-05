@@ -1,0 +1,49 @@
+import java.util.*;
+ class GFG
+{
+    static Node head;
+    static class Node{
+        int val;
+        Node next;
+        Node(int a)
+        {
+            val=a;
+            next=null;
+        }
+    }
+    
+    static boolean loop(Node a)
+    {
+        Set<Node> ob=new HashSet<Node>();
+        
+        while(a!=null){
+        if(ob.contains(a))
+        return true;
+        ob.add(a);
+        a=a.next;
+        }
+        return false;
+    }
+    public static void main(String args[])
+    {
+        Scanner s=new Scanner(System.in);
+        Node a=null,b=null;
+        int n=3;
+        for(int i=0;i<n;i++)
+        {
+            if(a==null)
+            {
+               a=new Node(s.nextInt());
+               b=a;
+            }else
+            {
+                b.next=new Node(s.nextInt());
+                b=b.next;
+            }
+        }
+        a.next.next=a.next;
+        boolean res=loop(a);
+        System.out.print(res);
+    }
+    
+}
