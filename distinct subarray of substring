@@ -1,0 +1,9 @@
+/*  algoritm
+1.initilize itr=i & index=0
+2.while(itr>0) condition
+3.check itr to be odd
+4.if odd, add as the string.
+5.itr=itr>>1 and index++
+6.add to hashset(to remove duplicates)
+7.perform recursion until (i<(1<<string.length())-1)
+
